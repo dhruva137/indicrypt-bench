@@ -61,33 +61,36 @@ Libraries never cross splits, so a score on a sealed set measures generalisation
 seen.
 
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph TRAIN["Train"]
-        direction LR
-        t1["crypto: mbedTLS · libtomcrypt · bcon · tiny-AES"]
-        t2["hard negatives: Lua · zstd · cJSON · zlib"]
+        direction TB
+        t1["crypto<br/>mbedTLS · libtomcrypt<br/>bcon · tiny-AES"]
+        t2["hard negatives<br/>Lua · zstd · cJSON · zlib"]
     end
-    subgraph DEV["Dev (model selection only)"]
-        direction LR
-        d1["crypto: PQClean (ML-KEM, ML-DSA, HQC, Falcon, SPHINCS+) · Monocypher · micro-ecc"]
-        d2["hard negatives: stb · lz4 · xxHash · kissfft"]
+    subgraph DEV["Dev · selection only"]
+        direction TB
+        d1["crypto<br/>PQClean · Monocypher<br/>micro-ecc"]
+        d2["hard negatives<br/>stb · lz4 · xxHash · kissfft"]
     end
-    subgraph SEALED["Sealed (scored once)"]
-        direction LR
-        s1["crypto: BearSSL · TweetNaCl · SipHash"]
-        s2["hard negatives: brotli · libdeflate · yyjson · lodepng"]
+    subgraph SEALED["Sealed · scored once"]
+        direction TB
+        s1["crypto<br/>BearSSL · TweetNaCl<br/>SipHash"]
+        s2["hard negatives<br/>brotli · libdeflate<br/>yyjson · lodepng"]
     end
-    subgraph SB["Sealed-B (registered before v2)"]
-        direction LR
-        b1["crypto: libsodium · wolfSSL"]
-        b2["hard negatives: SQLite · libpng"]
+    subgraph SB["Sealed-B"]
+        direction TB
+        b1["crypto<br/>libsodium · wolfSSL"]
+        b2["hard negatives<br/>SQLite · libpng"]
     end
-    subgraph SC["Sealed-C (registered during self-audit)"]
-        direction LR
-        c1["crypto: BLAKE3 · Argon2 · tiny_sha3"]
+    subgraph SC["Sealed-C"]
+        direction TB
+        c1["crypto<br/>BLAKE3 · Argon2<br/>tiny_sha3"]
     end
-    TRAIN --> DEV --> SEALED --> SB --> SC
+    TRAIN ==> DEV ==> SEALED ==> SB ==> SC
 ```
+
+PQClean in dev covers ML-KEM, ML-DSA, HQC, Falcon and SPHINCS+. Sealed-B was registered before the v2 work and
+sealed-C during the self-audit, both before any scoring.
 
 miniz is kept in the pool as an additional compression negative.
 
