@@ -1,0 +1,8 @@
+ziglang
+capstone
+lief
+yara-python
+numpy
+pandas
+scikit-learn
+joblib

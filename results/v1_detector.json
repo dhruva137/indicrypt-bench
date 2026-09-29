@@ -1,0 +1,752 @@
+{
+  "commit": "640135f",
+  "seed": 20260928,
+  "splits": 200,
+  "host": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+  "data": {
+    "train_rows": 26402,
+    "held_rows": 9155,
+    "train_by_label": {
+      "noncrypto": 19849,
+      "crypto": 6553
+    },
+    "held_by_label": {
+      "crypto": 4956,
+      "noncrypto": 4199
+    },
+    "held_unique_functions": 1583
+  },
+  "q1_detection": {
+    "mnemonic": {
+      "roc_auc": 0.7146,
+      "pr_auc": 0.7422,
+      "per_arch": {
+        "x86-64": {
+          "roc_auc": 0.715,
+          "pr_auc": 0.7401
+        },
+        "aarch64": {
+          "roc_auc": 0.6975,
+          "pr_auc": 0.7411
+        },
+        "arm32": {
+          "roc_auc": 0.7303,
+          "pr_auc": 0.7487
+        }
+      }
+    },
+    "operand": {
+      "roc_auc": 0.6828,
+      "pr_auc": 0.6942,
+      "per_arch": {
+        "x86-64": {
+          "roc_auc": 0.7114,
+          "pr_auc": 0.7216
+        },
+        "aarch64": {
+          "roc_auc": 0.6667,
+          "pr_auc": 0.6993
+        },
+        "arm32": {
+          "roc_auc": 0.6299,
+          "pr_auc": 0.6266
+        }
+      }
+    },
+    "mnemonic+operand": {
+      "roc_auc": 0.7249,
+      "pr_auc": 0.7538,
+      "per_arch": {
+        "x86-64": {
+          "roc_auc": 0.7282,
+          "pr_auc": 0.7565
+        },
+        "aarch64": {
+          "roc_auc": 0.7084,
+          "pr_auc": 0.7502
+        },
+        "arm32": {
+          "roc_auc": 0.7345,
+          "pr_auc": 0.7529
+        }
+      }
+    },
+    "top_features": [
+      [
+        "d_call",
+        0.0586
+      ],
+      [
+        "d_load",
+        0.0528
+      ],
+      [
+        "log_insns",
+        0.0491
+      ],
+      [
+        "caballero",
+        0.0461
+      ],
+      [
+        "imm_rate",
+        0.0402
+      ],
+      [
+        "d_store",
+        0.0382
+      ],
+      [
+        "mean_block",
+        0.038
+      ],
+      [
+        "bg_load_xor",
+        0.0358
+      ],
+      [
+        "d_jmp",
+        0.0331
+      ],
+      [
+        "caballero_adjusted",
+        0.0329
+      ],
+      [
+        "blk_std_move",
+        0.0305
+      ],
+      [
+        "d_stack",
+        0.0304
+      ],
+      [
+        "max_block",
+        0.0303
+      ],
+      [
+        "d_cmp",
+        0.03
+      ],
+      [
+        "log_blocks",
+        0.0275
+      ]
+    ]
+  },
+  "per_library_at_0.9": [
+    {
+      "library": "kissfft",
+      "n": 131,
+      "label": "noncrypto",
+      "flagged_at_0.9": 0,
+      "mean_score": 0.333
+    },
+    {
+      "library": "lz4",
+      "n": 1180,
+      "label": "noncrypto",
+      "flagged_at_0.9": 0,
+      "mean_score": 0.208
+    },
+    {
+      "library": "micro-ecc",
+      "n": 315,
+      "label": "crypto",
+      "flagged_at_0.9": 0,
+      "mean_score": 0.356
+    },
+    {
+      "library": "monocypher",
+      "n": 829,
+      "label": "crypto",
+      "flagged_at_0.9": 28,
+      "mean_score": 0.408
+    },
+    {
+      "library": "pqclean",
+      "n": 3812,
+      "label": "crypto",
+      "flagged_at_0.9": 91,
+      "mean_score": 0.392
+    },
+    {
+      "library": "stb",
+      "n": 2267,
+      "label": "noncrypto",
+      "flagged_at_0.9": 0,
+      "mean_score": 0.24
+    },
+    {
+      "library": "xxhash",
+      "n": 621,
+      "label": "noncrypto",
+      "flagged_at_0.9": 1,
+      "mean_score": 0.298
+    }
+  ],
+  "q2_baselines": {
+    "rf_mnemonic@0.9": {
+      "fdp": 0.0321,
+      "tpr": 0.0305,
+      "fpr": 0.0012,
+      "flagged": 156
+    },
+    "rf_operand@0.9": {
+      "fdp": 0.1364,
+      "tpr": 0.0038,
+      "fpr": 0.0007,
+      "flagged": 22
+    },
+    "rf_mnemonic+operand@0.9": {
+      "fdp": 0.0083,
+      "tpr": 0.024,
+      "fpr": 0.0002,
+      "flagged": 120
+    },
+    "caballero_adjusted": {
+      "threshold_from_train": 0.1724,
+      "fdp": 0.4316,
+      "tpr": 0.9798,
+      "fpr": 0.8783,
+      "flagged": 8544
+    },
+    "findcrypt3_elf_only": {
+      "fdp": 0.0,
+      "tpr": 0.0178,
+      "fpr": 0.0,
+      "flagged": 65,
+      "note": "gcc-x64 (COFF) excluded; attribution by relocation, as Mnemocrypt did"
+    },
+    "rf_mnemonic+operand@0.9_same_elf_rows": {
+      "fdp": 0.0111,
+      "tpr": 0.0244,
+      "flagged": 90
+    }
+  },
+  "q3_conformal": {
+    "prevalence=natural": {
+      "bh@0.05": {
+        "mean_fdp": 0.0141,
+        "se_fdp": 0.0014,
+        "p90_fdp": 0.0395,
+        "mean_power": 0.0224,
+        "mean_selected": 56.8
+      },
+      "ebh@0.05": {
+        "mean_fdp": 0.0141,
+        "se_fdp": 0.0014,
+        "p90_fdp": 0.0395,
+        "mean_power": 0.0224,
+        "mean_selected": 56.8
+      },
+      "bh@0.1": {
+        "mean_fdp": 0.0377,
+        "se_fdp": 0.002,
+        "p90_fdp": 0.0757,
+        "mean_power": 0.0339,
+        "mean_selected": 88.0
+      },
+      "ebh@0.1": {
+        "mean_fdp": 0.0377,
+        "se_fdp": 0.002,
+        "p90_fdp": 0.0757,
+        "mean_power": 0.0339,
+        "mean_selected": 88.0
+      },
+      "bh@0.2": {
+        "mean_fdp": 0.0869,
+        "se_fdp": 0.0027,
+        "p90_fdp": 0.1371,
+        "mean_power": 0.0636,
+        "mean_selected": 175.2
+      },
+      "ebh@0.2": {
+        "mean_fdp": 0.0869,
+        "se_fdp": 0.0027,
+        "p90_fdp": 0.1371,
+        "mean_power": 0.0636,
+        "mean_selected": 175.2
+      },
+      "fixed@0.9": {
+        "mean_fdp": 0.0077,
+        "se_fdp": 0.0006,
+        "p90_fdp": 0.0192,
+        "mean_power": 0.0244,
+        "mean_selected": 61.0
+      }
+    },
+    "prevalence=0.05": {
+      "bh@0.05": {
+        "mean_fdp": 0.0,
+        "se_fdp": 0.0,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0,
+        "mean_selected": 0.0
+      },
+      "ebh@0.05": {
+        "mean_fdp": 0.0,
+        "se_fdp": 0.0,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0,
+        "mean_selected": 0.0
+      },
+      "bh@0.1": {
+        "mean_fdp": 0.0076,
+        "se_fdp": 0.0045,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0007,
+        "mean_selected": 0.2
+      },
+      "ebh@0.1": {
+        "mean_fdp": 0.0076,
+        "se_fdp": 0.0045,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0007,
+        "mean_selected": 0.2
+      },
+      "bh@0.2": {
+        "mean_fdp": 0.0716,
+        "se_fdp": 0.0128,
+        "p90_fdp": 0.3333,
+        "mean_power": 0.0087,
+        "mean_selected": 1.8
+      },
+      "ebh@0.2": {
+        "mean_fdp": 0.0716,
+        "se_fdp": 0.0128,
+        "p90_fdp": 0.3333,
+        "mean_power": 0.0087,
+        "mean_selected": 1.8
+      },
+      "fixed@0.9": {
+        "mean_fdp": 0.1529,
+        "se_fdp": 0.0155,
+        "p90_fdp": 0.35,
+        "mean_power": 0.025,
+        "mean_selected": 3.2
+      }
+    },
+    "prevalence=0.01": {
+      "bh@0.05": {
+        "mean_fdp": 0.0,
+        "se_fdp": 0.0,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0,
+        "mean_selected": 0.0
+      },
+      "ebh@0.05": {
+        "mean_fdp": 0.0,
+        "se_fdp": 0.0,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0,
+        "mean_selected": 0.0
+      },
+      "bh@0.1": {
+        "mean_fdp": 0.0,
+        "se_fdp": 0.0,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0,
+        "mean_selected": 0.0
+      },
+      "ebh@0.1": {
+        "mean_fdp": 0.0,
+        "se_fdp": 0.0,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0,
+        "mean_selected": 0.0
+      },
+      "bh@0.2": {
+        "mean_fdp": 0.0462,
+        "se_fdp": 0.0143,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0016,
+        "mean_selected": 0.4
+      },
+      "ebh@0.2": {
+        "mean_fdp": 0.0462,
+        "se_fdp": 0.0143,
+        "p90_fdp": 0.0,
+        "mean_power": 0.0016,
+        "mean_selected": 0.4
+      },
+      "fixed@0.9": {
+        "mean_fdp": 0.3613,
+        "se_fdp": 0.03,
+        "p90_fdp": 1.0,
+        "mean_power": 0.0264,
+        "mean_selected": 1.0
+      }
+    }
+  },
+  "q3_conformal_mnemonic_only_5pct": {
+    "bh@0.05": {
+      "mean_fdp": 0.0,
+      "se_fdp": 0.0,
+      "p90_fdp": 0.0,
+      "mean_power": 0.0,
+      "mean_selected": 0.0
+    },
+    "ebh@0.05": {
+      "mean_fdp": 0.0,
+      "se_fdp": 0.0,
+      "p90_fdp": 0.0,
+      "mean_power": 0.0,
+      "mean_selected": 0.0
+    },
+    "bh@0.1": {
+      "mean_fdp": 0.0121,
+      "se_fdp": 0.0052,
+      "p90_fdp": 0.0,
+      "mean_power": 0.0019,
+      "mean_selected": 0.4
+    },
+    "ebh@0.1": {
+      "mean_fdp": 0.0121,
+      "se_fdp": 0.0052,
+      "p90_fdp": 0.0,
+      "mean_power": 0.0019,
+      "mean_selected": 0.4
+    },
+    "bh@0.2": {
+      "mean_fdp": 0.0973,
+      "se_fdp": 0.0133,
+      "p90_fdp": 0.4286,
+      "mean_power": 0.0117,
+      "mean_selected": 2.3
+    },
+    "ebh@0.2": {
+      "mean_fdp": 0.0973,
+      "se_fdp": 0.0133,
+      "p90_fdp": 0.4286,
+      "mean_power": 0.0117,
+      "mean_selected": 2.3
+    },
+    "fixed@0.9": {
+      "mean_fdp": 0.4516,
+      "se_fdp": 0.0123,
+      "p90_fdp": 0.6667,
+      "mean_power": 0.0311,
+      "mean_selected": 6.1
+    }
+  },
+  "q4_arch_shift": {
+    "train": "x86-64 only (clang + gcc)",
+    "x86-64": {
+      "roc_auc": 0.7366,
+      "calibrated_on_x86": {
+        "bh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.2": {
+          "mean_fdp": 0.0589,
+          "se_fdp": 0.0125,
+          "p90_fdp": 0.225,
+          "mean_power": 0.0112,
+          "mean_selected": 1.2
+        },
+        "ebh@0.2": {
+          "mean_fdp": 0.0589,
+          "se_fdp": 0.0125,
+          "p90_fdp": 0.225,
+          "mean_power": 0.0112,
+          "mean_selected": 1.2
+        },
+        "fixed@0.9": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0193,
+          "mean_selected": 1.1
+        }
+      },
+      "recalibrated_on_target": {
+        "bh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.2": {
+          "mean_fdp": 0.0702,
+          "se_fdp": 0.0136,
+          "p90_fdp": 0.3375,
+          "mean_power": 0.0122,
+          "mean_selected": 1.4
+        },
+        "ebh@0.2": {
+          "mean_fdp": 0.0702,
+          "se_fdp": 0.0136,
+          "p90_fdp": 0.3375,
+          "mean_power": 0.0122,
+          "mean_selected": 1.4
+        },
+        "fixed@0.9": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0197,
+          "mean_selected": 1.1
+        }
+      }
+    },
+    "aarch64": {
+      "roc_auc": 0.6753,
+      "calibrated_on_x86": {
+        "bh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.2": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0016,
+          "mean_selected": 0.0
+        },
+        "ebh@0.2": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0016,
+          "mean_selected": 0.0
+        },
+        "fixed@0.9": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0122,
+          "mean_selected": 0.3
+        }
+      },
+      "recalibrated_on_target": {
+        "bh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.1": {
+          "mean_fdp": 0.0035,
+          "se_fdp": 0.0035,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0007,
+          "mean_selected": 0.1
+        },
+        "ebh@0.1": {
+          "mean_fdp": 0.0035,
+          "se_fdp": 0.0035,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0007,
+          "mean_selected": 0.1
+        },
+        "bh@0.2": {
+          "mean_fdp": 0.0392,
+          "se_fdp": 0.0108,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0069,
+          "mean_selected": 0.5
+        },
+        "ebh@0.2": {
+          "mean_fdp": 0.0392,
+          "se_fdp": 0.0108,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0069,
+          "mean_selected": 0.5
+        },
+        "fixed@0.9": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0142,
+          "mean_selected": 0.4
+        }
+      }
+    },
+    "arm32": {
+      "roc_auc": 0.6945,
+      "calibrated_on_x86": {
+        "bh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.2": {
+          "mean_fdp": 0.0347,
+          "se_fdp": 0.0077,
+          "p90_fdp": 0.02,
+          "mean_power": 0.0101,
+          "mean_selected": 0.4
+        },
+        "ebh@0.2": {
+          "mean_fdp": 0.0347,
+          "se_fdp": 0.0077,
+          "p90_fdp": 0.02,
+          "mean_power": 0.0101,
+          "mean_selected": 0.4
+        },
+        "fixed@0.9": {
+          "mean_fdp": 0.4346,
+          "se_fdp": 0.0322,
+          "p90_fdp": 1.0,
+          "mean_power": 0.0124,
+          "mean_selected": 0.9
+        }
+      },
+      "recalibrated_on_target": {
+        "bh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.05": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "ebh@0.1": {
+          "mean_fdp": 0.0,
+          "se_fdp": 0.0,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0,
+          "mean_selected": 0.0
+        },
+        "bh@0.2": {
+          "mean_fdp": 0.0448,
+          "se_fdp": 0.0128,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0037,
+          "mean_selected": 0.5
+        },
+        "ebh@0.2": {
+          "mean_fdp": 0.0448,
+          "se_fdp": 0.0128,
+          "p90_fdp": 0.0,
+          "mean_power": 0.0037,
+          "mean_selected": 0.5
+        },
+        "fixed@0.9": {
+          "mean_fdp": 0.4042,
+          "se_fdp": 0.0322,
+          "p90_fdp": 1.0,
+          "mean_power": 0.0134,
+          "mean_selected": 0.8
+        }
+      }
+    }
+  },
+  "seconds": 27.0
+}

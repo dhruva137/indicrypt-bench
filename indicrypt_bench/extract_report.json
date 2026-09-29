@@ -1,0 +1,10 @@
+{
+  "objects": 6856,
+  "functions_kept": 45415,
+  "dropped": {
+    "tiny": 6587,
+    "glue": 2860,
+    "duplicate": 6245
+  },
+  "features": 74
+}

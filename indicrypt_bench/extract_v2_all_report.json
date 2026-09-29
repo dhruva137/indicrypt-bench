@@ -1,0 +1,11 @@
+{
+  "objects": 16711,
+  "functions_kept": 128288,
+  "dropped": {
+    "tiny": 25494,
+    "glue": 6674,
+    "duplicate": 10649,
+    "excluded_name": 22
+  },
+  "shards": 25
+}
