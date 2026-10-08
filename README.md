@@ -23,8 +23,10 @@ Numbers come from [`indicrypt_bench/extract_v2_all_report.json`](indicrypt_bench
 
 ## Install
 
+Not on PyPI yet; a PyPI release is planned and the licence is to be announced. For now, install from the repository:
+
 ```bash
-pip install indicrypt-bench
+pip install "indicrypt-bench @ git+https://github.com/dhruva137/indicrypt-bench.git"
 indicrypt-bench info                 # manifest, splits, pinned commits (--libraries)
 ```
 
