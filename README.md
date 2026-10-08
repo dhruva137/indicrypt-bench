@@ -1,11 +1,12 @@
 # IndiCrypt-Bench
 
+Part of Paper To Anything (https://papertoanything.com) — research software developed and maintained by Dhruva P Gowda. In development.
+
 **An open, reproducible benchmark for finding cryptography inside compiled binaries, across chip families, with
 library-disjoint sealed test sets.**
 
 IndiCrypt-Bench asks one question: *given a stripped binary, which of its functions are cryptographic?* It is the
-benchmark behind [V.E.R.A.](https://github.com/dhruva137/V.E.R.A), India's first certified crypto-discovery engine
-(SIH 2026, problem statement SIH26164, NTRO). Any tool that claims to find crypto in binaries can be tested on it
+benchmark behind [V.E.R.A.](https://github.com/dhruva137/V.E.R.A), a certified crypto-discovery engine. Any tool that claims to find crypto in binaries can be tested on it
 with the same libraries, the same labels and the same scores.
 
 | | |
@@ -19,8 +20,6 @@ with the same libraries, the same labels and the same scores.
 | Labels | from **source**, by a frozen rule, never from the binary |
 
 Numbers come from [`indicrypt_bench/extract_v2_all_report.json`](indicrypt_bench/extract_v2_all_report.json).
-
-**Part of [Paper To Anything](https://papertoanything.com/products/indicrypt-bench/).**
 
 ## Install
 
@@ -246,3 +245,9 @@ stripped binaries. 2026. https://github.com/dhruva137/indicrypt-bench
 ## Licence
 
 Licence to be announced.
+
+---
+
+## Origin
+
+IndiCrypt-Bench was built to support V.E.R.A. and is maintained alongside it as an independent research project.

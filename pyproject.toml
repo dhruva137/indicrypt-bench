@@ -2,7 +2,7 @@
 name = "indicrypt-bench"
 version = "0.1.0"
 description = "A library-disjoint, cross-architecture benchmark for finding cryptography in stripped binaries, with a scorer for ROC-AUC, PR-AUC and false-discovery proportion under conformal selection."
-readme = "README.md"
+readme = "PYPI.md"
 license = "LicenseRef-TBA"
 requires-python = ">=3.11"
 authors = [{ name = "Dhruva P Gowda" }]
@@ -25,6 +25,7 @@ dev = ["pytest>=8.0"]
 [project.urls]
 Homepage = "https://papertoanything.com/products/indicrypt-bench/"
 Repository = "https://github.com/dhruva137/indicrypt-bench"
+Documentation = "https://github.com/dhruva137/indicrypt-bench#readme"
 
 [project.scripts]
 indicrypt-bench = "indicrypt_bench.cli:main"
@@ -51,7 +52,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.sdist]
-include = ["indicrypt_bench", "tests", "README.md", "LICENSE", "HF_DATASET_CARD.md", "pyproject.toml"]
+include = ["indicrypt_bench", "tests", "PYPI.md", "README.md", "LICENSE", "HF_DATASET_CARD.md", "pyproject.toml"]
 exclude = ["indicrypt_bench/src", "indicrypt_bench/objects", "indicrypt_bench/v2*", "indicrypt_bench/functions.csv.gz"]
 
 [tool.pytest.ini_options]
