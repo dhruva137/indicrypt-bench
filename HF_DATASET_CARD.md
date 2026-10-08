@@ -105,7 +105,7 @@ memory of each upstream and **must be re-checked against the pinned commit befor
 | SQLite 3.46.1 | negative | public domain |
 | libpng 1.6.43 | negative | PNG Reference Library License v2 |
 
-The benchmark's own code and the labelled tables are Apache-2.0, Copyright 2026 Dhruva P Gowda. Open question for the
+The benchmark's own code and the labelled tables: licence to be announced, Copyright 2026 Dhruva P Gowda. Open question for the
 owner before upload: whether derived statistics of GPL-licensed builds (wolfSSL, and the GPL option of mbedTLS and zstd)
 need a different statement; they contain no code, only names, labels and counts.
 

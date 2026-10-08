@@ -242,3 +242,7 @@ stripped binaries. 2026. https://github.com/dhruva137/indicrypt-bench
 - Findcrypt3 rules: [polymorf/findcrypt-yara](https://github.com/polymorf/findcrypt-yara).
 - Mnemocrypt, NDSS BAR 2025; Where's Crypto?, USENIX Security 2021; Bates et al., *Testing for outliers with
   conformal p-values*, Annals of Statistics 2023.
+
+## Licence
+
+Licence to be announced.

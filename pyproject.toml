@@ -3,8 +3,7 @@ name = "indicrypt-bench"
 version = "0.1.0"
 description = "A library-disjoint, cross-architecture benchmark for finding cryptography in stripped binaries, with a scorer for ROC-AUC, PR-AUC and false-discovery proportion under conformal selection."
 readme = "README.md"
-license = "Apache-2.0"
-license-files = ["LICENSE"]
+license = "LicenseRef-TBA"
 requires-python = ">=3.11"
 authors = [{ name = "Dhruva P Gowda" }]
 keywords = ["benchmark", "cryptography", "binary-analysis", "reverse-engineering", "conformal-prediction", "security"]
