@@ -20,6 +20,45 @@ with the same libraries, the same labels and the same scores.
 
 Numbers come from [`indicrypt_bench/extract_v2_all_report.json`](indicrypt_bench/extract_v2_all_report.json).
 
+**Part of [Paper To Anything](https://papertoanything.com/products/indicrypt-bench/).**
+
+## Install
+
+```bash
+pip install indicrypt-bench
+indicrypt-bench info                 # manifest, splits, pinned commits (--libraries)
+```
+
+The wheel is small: the manifest, the splits, the source-derived label table and the scorer. Compiled objects and
+the function table are not shipped; `indicrypt-bench fetch` downloads the released data artifacts, or, while no
+release artifact exists, rebuilds them from the pinned sources with the scripts in this repository (see below).
+
+## Quick start: score your detector
+
+Write one row per function with your detector's score (higher = more cryptographic):
+
+```csv
+library,rel,name,arch,score
+bearssl,src/hash/sha2small.c,br_sha2small_round,x86-64,0.97
+brotli,c/enc/hash.c,BrotliHashSomething,aarch64,0.12
+```
+
+```bash
+indicrypt-bench score predictions.csv --split sealed-all
+```
+
+`library`, `rel` and `name` are the keys in `core_labels.csv`; `arch` is `x86-64`, `aarch64` or `arm32`. Labels are
+derived from the frozen rule, or pass your own `label` column (`1`/`0`). The report gives ROC-AUC and PR-AUC overall
+and per ISA, and the false-discovery proportion among flagged functions at natural, 5% and 1% crypto share, for a
+fixed 0.9 cut-off and for conformal Benjamini-Hochberg selection (`--alpha`, default 0.1). Python API:
+`from indicrypt_bench.score import score`.
+
+```bash
+indicrypt-bench fetch --dest indicrypt-data               # released artifacts if present, else rebuild
+indicrypt-bench fetch --rebuild --until sources           # only clone the 30 libraries at their pinned commits
+```
+
+
 ---
 
 ## Why this benchmark exists
@@ -105,7 +144,7 @@ features. Full rationale: [`indicrypt_bench/core_labels.py`](indicrypt_bench/cor
 
 ---
 
-## Quick start
+## Build the benchmark from source
 
 Requirements: Python 3.11+, git, and the packages in `requirements.txt` (`ziglang` provides clang for all three
 ISAs; MinGW-w64 gcc is needed only for the gcc x86-64 toolchain).
@@ -164,7 +203,8 @@ Operand features raise dev ROC-AUC from 0.760 (mnemonics only) to 0.793.
 ## Repository layout
 
 ```
-indicrypt_bench/   manifest (pinned sources), fetch, build, extraction, labelling, Findcrypt3 baseline
+indicrypt_bench/   manifest (pinned sources), splits, label table, scorer and CLI (the installed package);
+                   fetch, build, extraction, labelling and Findcrypt3 scripts (repository only)
 engine/binary_ml/  function recovery, the 74 features, graph views and conformal selection (shared with V.E.R.A.)
 experiments/       reference detector and the conformal false-discovery study
 results/           reference results

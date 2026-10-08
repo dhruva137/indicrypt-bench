@@ -6,3 +6,6 @@ indicrypt_bench/objects/
 indicrypt_bench/v2_*/
 indicrypt_bench/v2/
 indicrypt_bench/functions.csv.gz
+dist/
+build/
+*.egg-info/
